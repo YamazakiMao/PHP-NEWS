@@ -8,8 +8,7 @@ html {
 
 body {
     margin: 0;
-    min-width: 720px;
-    max-width: 1080px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -114,9 +113,9 @@ th {
 ================== */
 
 header {
+    border-bottom: 2px solid #0D4C92;
     text-align: center;
-    padding: 10px 20px;
-    background-color: #CFF5E7;
+    padding: 20px 20px;
 }
 
 header a {
@@ -128,9 +127,13 @@ header a {
 /* ===================
     ニュース投稿フォーム
 ======================*/
+.main {
+    width: 60%;
+    margin: 0 auto;
+}
 
 .news-main {
-    width: 60%;
+    width: 80%;
     text-align: center;
     margin: 0 auto;
 }
@@ -152,22 +155,21 @@ h2 {
 
 .contact-form {
     margin-top: 10px;
-    text-align: center;
 }
 
 .title input {
-    height: 2.5vh;
-    border: 1.5px solid gray;
+    background-color: lightgrey;
+    height: 3vh;
     padding: 0 5px;
-    width: 500px;
+    width: 400px;
     border-radius: 4px;
+    text-align: left;
 }
 
 .title label {
-    vertical-align: top;
+    vertical-align: center;
     text-align: right;
-    width: 100px;
-    display: inline-block;
+    width: 80px;
 }
 
 .news-sentence {
@@ -176,24 +178,28 @@ h2 {
 }
 
 .news-sentence textarea {
-    border: 1.5px solid gray;
-    width: 500px;
+    background-color: lightgrey;
+    width: 400px;
     border-radius: 4px;
     padding: 5px;
+    text-align: left;
 }
 
 .news-sentence label {
     vertical-align: top;
     text-align: right;
-    width: 100px;
-    display: inline-block;
+    width: 80px;
 }
 
 .submit-btn {
-    text-align: right;
+    background-color: #0D4C92;
+    position: relative;
 }
 
 .submit-btn input {
+    position: absolute;
+    right: 0;
+    text-align: right;
     border: none;
     outline: none;
     display: inline-block;
@@ -204,6 +210,19 @@ h2 {
     color: #FFF;
     background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
     transition: 1.0s;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+.show-news {
+    border-radius: 10px;
+    background: linear-gradient(-135deg, #2980B9,#0D4C92);
+    padding: 8px 10px;
+    color: #FFF;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+.posted {
+    margin-top: 70px;
 }
 
 /* ===================
