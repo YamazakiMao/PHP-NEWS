@@ -69,22 +69,22 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <!--投稿-->
                 <form action="index.php" method="post" class="news-form">
                     <div class="contact-form title">
-                        <label for="name">タイトル：</label>
+                        <label for="name">タイトル</label>
                         <input type= "text" name= "title">
                     </div>
                     <div class="contact-form news-sentence">
-                        <label for="name">記事：</label>
+                        <label for="name">　　記事</label>
                         <textarea rows="10" cols="50" name="content"></textarea>
                     </div>
-                </form>
-                <div class="contact-form submit-btn">
+                    <div class="contact-form submit-btn">
                         <input type= "submit" value= "投稿">
-                </div>
+                    </div>
+                </form>
             </div>
             
 
             
-            <div>
+            <div class="posted">
             <!--tableの中でtr部分をループ-->
             <?php $i = 0; ?>
             <?php while($i < count($BOARD)): ?>
@@ -103,7 +103,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                             <!--削除-->
                             <!--この時その投稿のidがサーバーに送信される-->
                             <input type= "hidden" name= "index" value= "<?php echo $i; ?>">
-                            <input type= "submit" value= "記事全文・コメントを見る">
+                            <input type= "submit" value= "記事全文・コメントを見る" class="show-news">
                         </li>
                     </form>
                 </ul>
