@@ -1,50 +1,33 @@
 <?php
 
-//HTMLタグの入力を無効にし、文字コードをutf-8にする
-//（PHPのおまじないのようなもの）
 function h($v){
     return htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
 }
 
-//変数の準備
-$FILE = 'news.txt'; //保存ファイル名
+$FILE = 'news.txt';
 
-$BOARD = []; //全ての投稿の情報を入れる
+$NEWS = [];
 
-//$FILEというファイルが存在しているとき
 if(file_exists($FILE)) {
-    //ファイルを読み込む
-    $BOARD = (array)json_decode(file_get_contents($FILE));
+    $NEWS = (array)json_decode(file_get_contents($FILE));
 }
 
-//$_SERVERは送信されたサーバーの情報を得る
-//REQUEST_METHODはフォームからのリクエストのメソッドがPOSTかGETか判断する
-// var_dump($_GET);
-// var_dump($_POST);
-// var_dump($_REQUEST);
-
+// ニュース投稿
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    //$_POSTはHTTPリクエストで渡された値を取得する
-    //リクエストパラメーターが空でなければ
+
     if(!empty($_POST['title']) && !empty($_POST['content'])){
-        //投稿ボタンが押された場合
-        $id = uniqid(); //ユニークなIDを自動生成
-        //$titleに送信されたタイトルとコンテンツを代入
+        $id = uniqid();
         $title = $_POST['title'];
         $content = $_POST['content'];
-        //新規データ
         $DATA = ["id" => $id, "title" => $title, "content" => $content];
-        //新規データを全体配列に代入する
-        $BOARD[] = $DATA;
+        var_dump($DATA);
+        $NEWS[] = $DATA;
 
-        //全体配列をファイルに保存する
-        file_put_contents($FILE, json_encode($BOARD));
+        file_put_contents($FILE, json_encode($NEWS));
         
     }
-    //header()で指定したページにリダイレクト
-    //今回は今と同じ場所にリダイレクト（つまりWebページを更新）
+
     header('Location: '.$_SERVER['SCRIPT_NAME']);
-    //プログラム終了
     exit;
 }
 ?>
@@ -82,33 +65,26 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 </form>
             </div>
             
-
-            
             <div class="posted">
                 <h2>ニュース一覧</h2>
-                <!--tableの中でtr部分をループ-->
-                <?php $i = 0; ?>
-                <?php while($i < count($BOARD)): ?>
+                <?php foreach ($NEWS as $index => $value): ?>
                     <hr>
                     <ul>
+                        <!-- ニュース投稿フォーム -->
                         <form action="show.php" method= "get">
                             <li class="list-title">
-                                <!--テキスト-->
-                                <?php echo $BOARD[$i]->title; ?>
+                                <?php echo $value->title; ?>
                             </li>
                             <li class="list-content">
-                                <!--日時-->
-                                <?php echo $BOARD[$i]->content; ?>
+                                <?php echo $value->content; ?>
                             </li>
                             <li class="show-news-btn">
-                                <!--この時その投稿のidがサーバーに送信される-->
-                                <input type= "hidden" name= "index" value= "<?php echo $i; ?>">
+                                <input type= "hidden" name= "index" value= "<?php echo $index; ?>">
                                 <input type= "submit" value= "記事全文・コメントを見る" class="show-news">
                             </li>
                         </form>
                     </ul>
-                    <?php $i++ ?>
-                <?php endwhile; ?>
+                <?php endforeach; ?>
             </div>
         </section>
     </div>
