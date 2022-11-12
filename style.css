@@ -220,6 +220,11 @@ ul li {
     margin-bottom: 10px;
 }
 
+.news-date {
+    color: gray;
+    font-size: 0.5rem;
+}
+
 /* ===================
     ニュース詳細
 ======================*/

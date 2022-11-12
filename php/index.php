@@ -6,6 +6,9 @@ function h($v){
 
 $FILE = 'news.txt';
 
+date_default_timezone_set('Japan');
+$date = date('Y/m/d H:i'); //日時（年/月/日/ 時:分）
+
 $NEWS = [];
 
 if(file_exists($FILE)) {
@@ -19,12 +22,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $id = uniqid();
         $title = $_POST['title'];
         $content = $_POST['content'];
-        $DATA = ["id" => $id, "title" => $title, "content" => $content];
-        var_dump($DATA);
+        $DATA = ["id" => $id, "date" => $date, "title" => $title, "content" => $content];
         $NEWS[] = $DATA;
 
         file_put_contents($FILE, json_encode($NEWS));
-        
     }
 
     header('Location: '.$_SERVER['SCRIPT_NAME']);
@@ -77,6 +78,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                             </li>
                             <li class="list-content">
                                 <?php echo $value->content; ?>
+                            </li>
+                            <li class="news-date">
+                                <?php echo $value->date; ?>
                             </li>
                             <li class="show-news-btn">
                                 <input type= "hidden" name= "index" value= "<?php echo $index; ?>">
