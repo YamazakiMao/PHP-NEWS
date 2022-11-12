@@ -4,8 +4,8 @@ function h($v){
     return htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
 }
 
-$FILE_NEWS = 'news.txt';
-$FILE_COMMENTS = 'comments.txt';
+$FILE_NEWS = '../data/news.txt';
+$FILE_COMMENTS = '../data/comments.txt';
 
 $NEWS = [];
 $COMMENTS = [];

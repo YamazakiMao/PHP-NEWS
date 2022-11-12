@@ -4,7 +4,7 @@ function h($v){
     return htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
 }
 
-$FILE = 'news.txt';
+$FILE = '../data/news.txt';
 
 date_default_timezone_set('Japan');
 $date = date('Y/m/d H:i'); //日時（年/月/日/ 時:分）
