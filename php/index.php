@@ -53,7 +53,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <html lang= "ja">
 <head>
     <link rel="stylesheet" href="../style.css">
-    <meta name= "viewport" content= "width=device-width, initial-scale= 1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
     <meta http-equiv= "content-type" charset= "utf-8">
     <title>php news</title>
 </head>
@@ -70,11 +70,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <form action="index.php" method="post" class="news-form">
                     <div class="contact-form title">
                         <label for="name">タイトル</label>
-                        <input type= "text" name= "title">
+                        <input type= "text" name= "title" class="title-width">
                     </div>
                     <div class="contact-form news-sentence">
-                        <label for="name">　　記事</label>
-                        <textarea rows="10" cols="50" name="content"></textarea>
+                        <label for="name" class="news-text">記事</label>
+                        <textarea name="content" class="sentence-width"></textarea>
                     </div>
                     <div class="contact-form submit-btn">
                         <input type= "submit" value= "投稿">
@@ -85,30 +85,30 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
             
             <div class="posted">
-            <!--tableの中でtr部分をループ-->
-            <?php $i = 0; ?>
-            <?php while($i < count($BOARD)): ?>
-                <hr>
-                <ul>
-                    <form action="show.php" method= "get">
-                        <li class="list-title">
-                            <!--テキスト-->
-                            <?php echo $BOARD[$i]->title; ?>
-                        </li>
-                        <li class="list-content">
-                            <!--日時-->
-                            <?php echo $BOARD[$i]->content; ?>
-                        </li>
-                        <li>
-                            <!--削除-->
-                            <!--この時その投稿のidがサーバーに送信される-->
-                            <input type= "hidden" name= "index" value= "<?php echo $i; ?>">
-                            <input type= "submit" value= "記事全文・コメントを見る" class="show-news">
-                        </li>
-                    </form>
-                </ul>
-                <?php $i++ ?>
-            <?php endwhile; ?>
+                <h2>ニュース一覧</h2>
+                <!--tableの中でtr部分をループ-->
+                <?php $i = 0; ?>
+                <?php while($i < count($BOARD)): ?>
+                    <hr>
+                    <ul>
+                        <form action="show.php" method= "get">
+                            <li class="list-title">
+                                <!--テキスト-->
+                                <?php echo $BOARD[$i]->title; ?>
+                            </li>
+                            <li class="list-content">
+                                <!--日時-->
+                                <?php echo $BOARD[$i]->content; ?>
+                            </li>
+                            <li class="show-news-btn">
+                                <!--この時その投稿のidがサーバーに送信される-->
+                                <input type= "hidden" name= "index" value= "<?php echo $i; ?>">
+                                <input type= "submit" value= "記事全文・コメントを見る" class="show-news">
+                            </li>
+                        </form>
+                    </ul>
+                    <?php $i++ ?>
+                <?php endwhile; ?>
             </div>
         </section>
     </div>

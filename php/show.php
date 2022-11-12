@@ -100,38 +100,50 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
         
         <section class= "main">
             <div class="show-contents">
-                <div class="list-title">
+                <h3>
                     <?php echo $NEWS[$index]->title; ?>
-                </div>
+                </h3>
                 <div class="list-content">
                     <?php echo $NEWS[$index]->content; ?>
                 </div>
             </div>
             <hr>
             <form action="show.php" method= "post">
-                <div>
-                    <textarea name="comment" class="post-it"></textarea>
-                </div>
-                <!--削除-->
-                <!--この時その投稿のidがサーバーに送信される-->
-                <input type= "hidden" name="index" value="<?php echo $index; ?>">
-                <input type= "submit" value= "コメントを書く">
-            </form>
-
-            <?php $i = 0; ?>
-            <?php while($i < count($COMMENTS)): ?>
-                <form action="show.php" method= "post">
-                    <div class="post-it">
-                        <?php echo $COMMENTS[$i]->comment; ?>
+                <div class="post-it-cover">
+                    <div class="news-sentence">
+                        <label for="name">コメント</label>
+                        <textarea name="comment" ></textarea>
                     </div>
                     <!--削除-->
                     <!--この時その投稿のidがサーバーに送信される-->
-                    <input type= "hidden" name="index" value="<?php echo $index; ?>">
-                    <input type= "hidden" name= "del" value= "<?php echo $COMMENTS[$i]->id; ?>">
-                    <input type= "submit" value= "コメントを削除する">
-                </form>
+                    <div class="submit-btn">
+                        <input type= "hidden" name="index" value="<?php echo $index; ?>">
+                        <input type= "submit" value= "コメントを書く" class="comment-write">
+                    </div>
+                </div>    
+            </form>
+
+            <!-- <hr style="margin-top: 30px;"> -->
+            <h3>コメント一覧</h3>
+            <p>コメント数: <?php echo count($COMMENTS); ?></p>
+            <div class="comment-wrote">
+                <?php $i = 0; ?>
+                <?php while($i < count($COMMENTS)): ?>
+                    <hr>
+                    <form action="show.php" method= "post">
+                        <div class="news-sentence comment-sentence">
+                            <?php echo $COMMENTS[$i]->comment; ?>
+                        </div>
+                        <!--削除-->
+                        <div class="delete-btn">
+                        <!--この時その投稿のidがサーバーに送信される-->
+                            <input type= "hidden" name="index" value="<?php echo $index; ?>">
+                            <input type= "hidden" name= "del" value= "<?php echo $COMMENTS[$i]->id; ?>">
+                            <input type= "submit" value= "コメントを削除する">
+                        </div>
+                    </form>
                 <?php $i++ ?>
-            <?php endwhile; ?>
+                <?php endwhile; ?>
             </div>
         </section>
     </div>

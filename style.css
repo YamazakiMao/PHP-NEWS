@@ -28,16 +28,6 @@ dl {
     margin: 0;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-}
 
 ul,
 ol {
@@ -133,57 +123,46 @@ header a {
 }
 
 .news-main {
-    width: 80%;
-    text-align: center;
+    width: 100%;
+    /* text-align: center; */
     margin: 0 auto;
 }
 
-.main img {
-    width: 400px;
-}
 
 h2 {
     margin: 30px 0 20px 15px;
     font-size: 3vh;
     font-weight: bold;
-}
-
-.news-form {
-    width: 100%;
-    justify-content: center;
+    text-align: center;
 }
 
 .contact-form {
     margin-top: 10px;
 }
 
+
 .title input {
     background-color: lightgrey;
-    height: 3vh;
-    padding: 0 5px;
-    width: 400px;
+    height: 30px;
+    padding: 5px;
+    width: 80%;
     border-radius: 4px;
-    text-align: left;
-}
-
-.title label {
-    vertical-align: center;
-    text-align: right;
-    width: 80px;
 }
 
 .news-sentence {
     width: 100%;
     margin-left: 0 auto ;
-}
+} 
 
 .news-sentence textarea {
     background-color: lightgrey;
-    width: 400px;
+    height: 200px;
+    width: 80%;
     border-radius: 4px;
     padding: 5px;
     text-align: left;
 }
+
 
 .news-sentence label {
     vertical-align: top;
@@ -191,15 +170,13 @@ h2 {
     width: 80px;
 }
 
+
 .submit-btn {
-    background-color: #0D4C92;
-    position: relative;
+    width: 90%;
+    text-align: right;
 }
 
 .submit-btn input {
-    position: absolute;
-    right: 0;
-    text-align: right;
     border: none;
     outline: none;
     display: inline-block;
@@ -213,6 +190,7 @@ h2 {
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.6);
 }
 
+
 .show-news {
     border-radius: 10px;
     background: linear-gradient(-135deg, #2980B9,#0D4C92);
@@ -223,6 +201,10 @@ h2 {
 
 .posted {
     margin-top: 70px;
+} 
+
+.news-text {
+    padding-left: 2rem;
 }
 
 /* ===================
@@ -241,22 +223,70 @@ ul li {
 /* ===================
     ニュース詳細
 ======================*/
-
-.show-contents {
-    padding: 20px;
+.post-it-cover {
+    margin-top: 30px;
 }
 
-.post-it {
-    background-color: #ff8b5f;
-    resize: none;
-    height: 8.5rem;
-    width: 10.5rem;
-    margin-top: 30px;
-    margin-left: 20px;
+
+.comment-form {
+    text-align: center;
+}
+
+.comment-write {
+    margin-top: 10px;
+}
+
+.comment-sentence {
+    margin-bottom: 10px;
+}
+
+.comment-wrote {
+    margin: 20px 0;
+}
+
+.delete-btn {
     border: none;
-    padding: 1em;
-    overflow: hidden;
-    box-shadow: 0 0.5rem 0.5rem hsl(0deg 0% 0% / 10%);
-    font-size: 0.9rem;
-    line-height: 1.8;
+    outline: none;
+    display: inline-block;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    padding: 7px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: #FFF;
+    background: linear-gradient(-135deg, #2980B9,#0D4C92);
+    transition: 1.0s;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+@media screen and (max-width: 768px) {
+	/* 768px以下に適用されるCSS（タブレット用） */
+    .news-text {
+        padding-left: 0;
+        padding-right: 2rem;
+    }
+}
+@media screen and (max-width: 480px) {
+	/* 480px以下に適用されるCSS（スマホ用） */
+    .show-news-btn {
+        text-align: center;
+    }
+    .submit-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .submit-btn input {
+        margin-right: 0;
+    }
+
+    .news-sentence textarea {
+        width: 100%;
+        padding: 0;
+    }
+
+    .title input {
+        width: 100%;
+        padding: 0;
+    }
 }
