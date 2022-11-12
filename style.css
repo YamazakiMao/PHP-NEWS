@@ -280,6 +280,14 @@ ul li {
     margin-top:20px
 }
 
+footer {
+    background-color: #0D4C92;
+    padding: 30px;
+    text-align: center;
+    color: #fff;
+    margin-top: 50px;
+}
+
 @media screen and (max-width: 768px) {
 	/* 768px以下に適用されるCSS（タブレット用） */
     .news-text {
