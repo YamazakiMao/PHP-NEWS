@@ -207,6 +207,10 @@ h2 {
     padding-left: 2rem;
 }
 
+.image-file {
+    margin-left: 65px;
+}
+
 /* ===================
     ニュース投稿一覧
 ======================*/
@@ -230,6 +234,10 @@ ul li {
 ======================*/
 .post-it-cover {
     margin-top: 30px;
+}
+
+.show-contents {
+    margin-bottom: 20px;
 }
 
 
@@ -262,6 +270,10 @@ ul li {
     background: linear-gradient(-135deg, #2980B9,#0D4C92);
     transition: 1.0s;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+.posted-image {
+    margin-top:20px
 }
 
 @media screen and (max-width: 768px) {

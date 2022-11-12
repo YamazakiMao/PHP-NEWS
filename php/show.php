@@ -69,11 +69,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         
         <section class= "main">
             <div class="show-contents">
+                <img src="images/<?php echo $NEWS[$index]->image; ?>" width="100%" class="posted-image">
                 <h3>
                     <?php echo $NEWS[$index]->title; ?>
                 </h3>
                 <div class="list-content">
                     <?php echo $NEWS[$index]->content; ?>
+                </div>
+                <div class="list-content news-date">
+                    <?php echo $NEWS[$index]->date; ?>
                 </div>
             </div>
             <hr>

@@ -22,7 +22,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $id = uniqid();
         $title = $_POST['title'];
         $content = $_POST['content'];
-        $DATA = ["id" => $id, "date" => $date, "title" => $title, "content" => $content];
+        if (!empty($_FILES['image']['name'])) {//ファイルが選択されていれば$imageにファイル名を代入
+            $image = uniqid(mt_rand(), true);//ファイル名をユニーク化
+            $image .= '.' . substr(strrchr($_FILES['image']['name'], '.'), 1);//アップロードされたファイルの拡張子を取得
+            move_uploaded_file($_FILES['image']['tmp_name'], './images/' . $image);//imagesディレクトリにファイル保存
+        } else {
+            $image = "noimage.jpg";
+        }
+        $DATA = ["id" => $id, "date" => $date, "title" => $title, "content" => $content, "image" => $image];
         $NEWS[] = $DATA;
 
         file_put_contents($FILE, json_encode($NEWS));
@@ -51,7 +58,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <div class="news-main">
                 <h2>最新のニュースをシェアしてください。</h2>
                 <!--投稿-->
-                <form action="index.php" method="post" class="news-form">
+                <form action="index.php" method="post" class="news-form" enctype="multipart/form-data">
                     <div class="contact-form title">
                         <label for="name">タイトル</label>
                         <input type= "text" name= "title" class="title-width">
@@ -59,6 +66,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     <div class="contact-form news-sentence">
                         <label for="name" class="news-text">記事</label>
                         <textarea name="content" class="sentence-width"></textarea>
+                    </div>
+                    <div class="contact-form image-file">
+                        <input type="file" name="image">
                     </div>
                     <div class="contact-form submit-btn">
                         <input type= "submit" value= "投稿">
