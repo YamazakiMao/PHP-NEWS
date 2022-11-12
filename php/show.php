@@ -106,10 +106,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                         <div class="news-sentence comment-sentence">
                             <?php echo $value->comment; ?>
                         </div>
-                        <div class="delete-btn">
+                        <div class="show-news-btn">
                             <input type= "hidden" name="index" value="<?php echo $index; ?>">
                             <input type= "hidden" name= "del" value= "<?php echo $value->id; ?>">
-                            <input type= "submit" value= "コメントを削除する">
+                            <input type= "submit" value= "コメントを削除する" class="delete-btn">
                         </div>
                     </form>
                 <?php endforeach; ?>

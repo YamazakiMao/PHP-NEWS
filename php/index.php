@@ -68,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                         <textarea name="content" class="sentence-width"></textarea>
                     </div>
                     <div class="contact-form image-file">
-                        <input type="file" name="image">
+                        <input type="file" name="image" id="file">
                     </div>
                     <div class="contact-form submit-btn">
                         <input type= "submit" value= "投稿">
@@ -86,8 +86,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                             <li class="list-title">
                                 <?php echo $value->title; ?>
                             </li>
-                            <li class="list-content">
-                                <?php echo $value->content; ?>
+                                <li class="list-content">
+                                <?php echo mb_strimwidth( $value->content, 0, 200, '…', 'UTF-8' ); ?>
                             </li>
                             <li class="news-date">
                                 <?php echo $value->date; ?>

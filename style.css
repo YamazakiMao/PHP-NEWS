@@ -211,6 +211,12 @@ h2 {
     margin-left: 65px;
 }
 
+.show-contents img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover; 
+}
+
 /* ===================
     ニュース投稿一覧
 ======================*/
@@ -261,8 +267,6 @@ ul li {
     border: none;
     outline: none;
     display: inline-block;
-    margin-right: 50px;
-    margin-bottom: 20px;
     padding: 7px 20px;
     border-radius: 25px;
     text-decoration: none;
@@ -283,6 +287,14 @@ ul li {
         padding-right: 2rem;
     }
 }
+
+@media screen and (max-width: 660px) {
+	/* 768px以下に適用されるCSS（タブレット用） */
+    .image-file {
+        margin-left: 0;
+    }
+}
+
 @media screen and (max-width: 480px) {
 	/* 480px以下に適用されるCSS（スマホ用） */
     .show-news-btn {
@@ -305,5 +317,9 @@ ul li {
     .title input {
         width: 100%;
         padding: 0;
+    }
+
+    .image-file {
+        margin-left: 0;
     }
 }
